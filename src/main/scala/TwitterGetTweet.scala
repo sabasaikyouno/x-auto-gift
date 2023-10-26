@@ -13,9 +13,13 @@ object TwitterGetTweet {
     //ツイートを取得し、１週間以内なら取得する
     chrome
       .findElement(By.xpath("//div[contains(@aria-label, 'Timeline:')]"))
-      .findElements(By.cssSelector(".css-4rbku5.css-18t94o4.css-901oao.r-14j79pv.r-1loqt21.r-xoduu5.r-1q142lx.r-1w6e6rj.r-37j5jr.r-a023e6.r-16dba41.r-9aw3ui.r-rjixqe.r-bcqeeo.r-3s2u2q.r-qvutc0"))
+      //.findElements(By.cssSelector(".css-4rbku5.css-18t94o4.css-901oao.r-14j79pv.r-1loqt21.r-xoduu5.r-1q142lx.r-1w6e6rj.r-37j5jr.r-a023e6.r-16dba41.r-9aw3ui.r-rjixqe.r-bcqeeo.r-3s2u2q.r-qvutc0"))
+      .findElements(By.cssSelector(".css-4rbku5.css-18t94o4.css-901oao.r-1bwzh9t.r-1loqt21.r-xoduu5.r-1q142lx.r-1w6e6rj.r-37j5jr.r-a023e6.r-16dba41.r-9aw3ui.r-rjixqe.r-bcqeeo.r-3s2u2q.r-qvutc0"))
       .asScala
-      .filter(ele => getDiffDays(ele.getAttribute("datetime")) <= 7)
+      .filter { ele =>
+        val dateStr = ele.findElement(By.tagName("time")).getAttribute("datetime")
+        getDiffDays(dateStr) <= 7
+      }
       .map(_.getAttribute("href"))
       .toList
   }
@@ -24,7 +28,7 @@ object TwitterGetTweet {
   private def getDiffDays(dateStr: String) = {
     val date = new DateTime(dateStr)
 
-    Days.daysBetween(new DateTime(), date).getDays
+    Days.daysBetween(date, new DateTime()).getDays
   }
 
 }
