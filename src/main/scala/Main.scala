@@ -1,9 +1,12 @@
+import java.io.File
+
 import LoadedTweets.{loadedList, loadedWrite}
 import TwitterFollowing.followingList
 import TwitterGetTweet.tweetList
 import TwitterLogin.login
 import org.openqa.selenium.chrome.ChromeDriver
 import TwitterActions._
+import com.github.tototoshi.csv.CSVReader
 
 import scala.collection.mutable
 
@@ -18,8 +21,9 @@ object Main {
       loadedWrite(loadedHashSet)
     }
 
-    val twitterId = "@forsuger169566"
-    login(twitterId, "liens1234")
+    val twitterLoginIte = CSVReader.open(new File("src\\main\\resources\\twitter_login.csv")).iterator
+    val twitterId = twitterLoginIte.next().head
+    login(twitterId, twitterLoginIte.next().head)
 
     followingList(twitterId)
       .flatMap(following => tweetList(following))
