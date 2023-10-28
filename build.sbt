@@ -6,6 +6,7 @@ scalaVersion := "2.13.12"
 
 libraryDependencies += "org.seleniumhq.selenium" % "selenium-java" % "4.12.1"
 libraryDependencies += "com.github.tototoshi" %% "scala-csv" % "1.3.10"
+libraryDependencies += "joda-time" % "joda-time" % "2.12.5"
 
 assemblyMergeStrategy in assembly := {
   case x if x.contains("io.netty.versions.properties") => MergeStrategy.discard
