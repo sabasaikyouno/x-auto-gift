@@ -29,6 +29,7 @@ object Main {
       .flatMap(following => tweetList(following))
       .filterNot(tweetUrl => loadedHashSet.contains(tweetUrl))
       .foreach { tweetUrl =>
+        println(tweetUrl)
         likeAndRepost(tweetUrl)
         loadedHashSet += tweetUrl
       }
