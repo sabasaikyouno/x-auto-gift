@@ -21,7 +21,7 @@ object Main {
       loadedWrite(loadedHashSet)
     }
 
-    val twitterLoginIte = CSVReader.open(new File("src\\main\\resources\\twitter_login.csv")).iterator
+    val twitterLoginIte = CSVReader.open(new File("twitter_login.csv")).iterator
     val twitterId = twitterLoginIte.next().head
     login(twitterId, twitterLoginIte.next().head)
 
