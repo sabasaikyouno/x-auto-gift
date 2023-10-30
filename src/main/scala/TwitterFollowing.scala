@@ -12,7 +12,7 @@ object TwitterFollowing {
 
     //フォロー一覧の要素取得
     val followingEle = chrome
-      .findElement(By.xpath("//div[@aria-label='Timeline: Following']"))
+      .findElement(By.xpath("//div[@aria-label='タイムライン: フォロー中']"))
       .findElements(By.xpath("//a[@tabindex='-1' and @class='css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-1wbh5a2 r-dnmrzs r-1ny4l3l']"))
 
     //フォロー一覧のプロフィールurlを抽出
