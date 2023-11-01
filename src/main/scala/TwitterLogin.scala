@@ -5,7 +5,6 @@ object TwitterLogin {
   def login(twitterId: String, password: String)(implicit chrome: ChromeDriver) = {
     //twitterのログイン画面にアクセス
     chrome.get("https://twitter.com/i/flow/login")
-    Thread.sleep(2000)
 
     //twitter idを入力する要素を取得
     val loginElement = chrome.findElement(By.className("r-30o5oe"))
@@ -21,6 +20,6 @@ object TwitterLogin {
     passElement.sendKeys(password)
     //enterで次に行く
     passElement.sendKeys(Keys.ENTER)
-    Thread.sleep(3000)
+    Thread.sleep(2000)
   }
 }

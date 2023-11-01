@@ -8,9 +8,9 @@ import scala.util.Try
 
 object TwitterGetTweet {
   def tweetList(url: String)(implicit chrome: ChromeDriver) = {
-    //プロフィールにアクセス
+    //ツイート検索
     chrome.get(makeSearchUrl(url))
-    Thread.sleep(5000)
+    Thread.sleep(3000)
 
     Try {
       //ツイートを取得する

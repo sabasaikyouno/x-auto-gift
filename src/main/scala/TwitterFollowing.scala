@@ -8,7 +8,6 @@ object TwitterFollowing {
   def followingList(id: String)(implicit chrome: ChromeDriver) = {
     //フォロー一覧サイトにアクセス
     chrome.get(s"https://twitter.com/$id/following")
-    Thread.sleep(2000)
 
     //フォロー一覧の要素取得
     val followingEle = chrome
