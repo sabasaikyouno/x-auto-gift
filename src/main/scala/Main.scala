@@ -14,12 +14,7 @@ import scala.collection.mutable
 object Main {
 
   def main(args: Array[String]): Unit = {
-    System.setProperty("webdriver.chrome.driver", "C:\\x-auto-gift\\chrome\\chromedriver_win32\\chromedriver.exe")
-    val options = new ChromeOptions()
-    options.addArguments("--user-data-dir=C:\\x-auto-gift\\chrome")
-    options.addArguments("--profile-directory=Profiel1")
-
-    implicit val chrome: ChromeDriver = new ChromeDriver(options)
+    implicit val chrome: ChromeDriver = new ChromeDriver()
     chrome.manage().timeouts().implicitlyWait(Duration.ofSeconds(5))
 
     val loadedHashSet = mutable.HashSet(loadedList: _*)
