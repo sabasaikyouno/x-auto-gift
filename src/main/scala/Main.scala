@@ -1,4 +1,5 @@
 import java.io.File
+import java.time.Duration
 
 import LoadedTweets.{loadedList, loadedWrite}
 import TwitterFollowing.followingList
@@ -14,6 +15,7 @@ object Main {
 
   def main(args: Array[String]): Unit = {
     implicit val chrome: ChromeDriver = new ChromeDriver()
+    chrome.manage().timeouts().implicitlyWait(Duration.ofSeconds(5))
 
     val loadedHashSet = mutable.HashSet(loadedList: _*)
 
